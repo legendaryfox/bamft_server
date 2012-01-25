@@ -1,4 +1,12 @@
 BamftServer::Application.routes.draw do
+  get "truckinfo/fetch"
+  
+  resources :truckinfos do
+    collection do
+      get 'fetch'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

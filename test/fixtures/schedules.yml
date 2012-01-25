@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  time_of_day: 1
+  day_of_week: 1
+  truck_id: 1
+  landmark_id: 1
+
+two:
+  time_of_day: 1
+  day_of_week: 1
+  truck_id: 1
+  landmark_id: 1

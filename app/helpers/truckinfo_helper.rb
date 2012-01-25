@@ -1,0 +1,2 @@
+module TruckinfoHelper
+end
