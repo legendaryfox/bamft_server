@@ -1,4 +1,10 @@
 BamftServer::Application.routes.draw do
+  get "landmarks/full_dump"
+
+  get "trucks/full_dump"
+  
+  get "schedules/full_dump"
+
   get "trucks/morning"
 
   get "trucks/afternoon"

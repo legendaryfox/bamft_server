@@ -24,12 +24,21 @@ class Datapull < ActiveRecord::Base
       # Next, we store this information
     
       # We should probably check data integrity first...
-      self.api_data = JSON.parse(api_content)
-      self.checksum = make_checksum(self.api_data.to_s)
-      self.time_of_day = request_tod
-      self.day_of_week = self.api_data['features'][0]['attributes']['DayOfWeek']
+      test_api_data = JSON.parse(api_content)
+      if test_api_data['features'] && !test_api_data['error']
+      
+      
+        #self.api_data = JSON.parse(api_content)
+        self.api_data = test_api_data
+        self.checksum = make_checksum(self.api_data.to_s)
+        self.time_of_day = request_tod
+        self.day_of_week = self.api_data['features'][0]['attributes']['DayOfWeek']
   
-      return self.api_data
+        return self.api_data
+      else
+        NEW_RECORD_LOG.error "PULL_DATA FAILED BECAUSE OF CORRUPT API DATA"
+        return false
+      end
     
     rescue Exception => e
       NEW_RECORD_LOG.error "PULL_DATA FAILED FOR #{request_tod}."
@@ -44,7 +53,14 @@ class Datapull < ActiveRecord::Base
     # Update our database with information from *THIS* (and ONLY this) instance of datapull
 
     if self.api_data
-      # First, we go through locations
+      
+      
+      day_of_week = self.api_data['features'][0]['attributes']['DayOfWeek']
+      time_of_day = self.api_data['features'][0]['attributes']['TimeOfDay']
+      
+      # First DUMP the old SCHEDULE data
+      Schedule.delete_all(:time_of_day => time_of_day, :day_of_week => day_of_week)
+      
       self.api_data['features'].each do |feature|
       
       
@@ -54,8 +70,8 @@ class Datapull < ActiveRecord::Base
         location_y = feature['attributes']['YCoord'].to_s
       
       
-        day_of_week = feature['attributes']['DayOfWeek']
-        time_of_day = feature['attributes']['TimeOfDay']
+       # day_of_week = feature['attributes']['DayOfWeek']
+        #time_of_day = feature['attributes']['TimeOfDay']
       
         if (Landmark.find(:all, :conditions => { :name => location_name, :xcoord => location_x, :ycoord => location_y})).count == 0
           # This location is not in our database. Create and log      
@@ -94,9 +110,12 @@ class Datapull < ActiveRecord::Base
             
               # While we're in here, we'll make schedule.
             
+              # Should we drop all schedules that are of that TOD/DOW?
+              
            
            
-              # First check to see if the truck already has this TOD/DOW in its schedules
+             
+              
               if (Schedule.find(:all, :conditions => { 
                   :truck_id => my_truck.id, 
                   :landmark_id => my_landmark.id, 
@@ -109,6 +128,7 @@ class Datapull < ActiveRecord::Base
                 
               else
                 #This schedule already exists.
+                NEW_RECORD_LOG.error "Existing schedules found for #{day_of_week} #{time_of_day}" #this should NEVER happen because we dumped first
               
               end # if Schedule
             
@@ -125,10 +145,11 @@ class Datapull < ActiveRecord::Base
     else # if api_data
       
       return false
+      
     end
     
     
-    
+    # TODO - WHAT ABOUT CLEANING OUR DATA?
     
     
   end

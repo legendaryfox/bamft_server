@@ -1,4 +1,14 @@
 class TrucksController < ApplicationController
+  
+  def full_dump
+    #@trucks = Truck.all
+    @trucks = Truck.select('id', 'name', 'cuisine', 'description')
+    render :json => @trucks
+    
+    puts 'Rendering full Truck JSON dump'
+    
+  end
+  
   def morning
     @trucks = Truck.all(:conditions => 
       {

@@ -1,4 +1,3 @@
--grab API data for time of day (0, 1, 2, or multiple)
--go into testfld
---dig out each truck
---if
+-error checking on APIDATA
+-Do a freshness check
+-Automate datapull
