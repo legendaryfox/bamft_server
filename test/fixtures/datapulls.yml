@@ -1,28 +1,31 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  checksum: MyString
+  notes: MyText
   time_of_day: 1
   day_of_week: 1
-  truck_id: 1
-  landmark_id: 1
+  apidata: MyText
 
 two:
+  checksum: MyString
+  notes: MyText
   time_of_day: 1
   day_of_week: 1
-  truck_id: 1
-  landmark_id: 1
+  apidata: MyText
 
 
 
 # == Schema Information
 #
-# Table name: schedules
+# Table name: datapulls
 #
 #  id          :integer         not null, primary key
-#  time_of_day :string(255)
+#  checksum    :string(255)
+#  notes       :text
+#  time_of_day :integer
 #  day_of_week :string(255)
-#  truck_id    :integer
-#  landmark_id :integer
+#  api_data    :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #

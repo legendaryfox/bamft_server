@@ -1,2 +1,7 @@
 <h1>Truckinfo#fetch</h1>
 <p>Find me in app/views/truckinfo/fetch.html.erb</p>
+
+Hello
+<% @raw_landmark_features.each do |feature| %>
+<%= feature['attributes']['Location'] %>, at (<%= feature['attributes']['XCoord'] %>, <%= feature['attributes']['YCoord']%>) <br />
+<% end %>

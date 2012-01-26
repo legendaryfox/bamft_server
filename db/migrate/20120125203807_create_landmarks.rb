@@ -1,7 +1,7 @@
 class CreateLandmarks < ActiveRecord::Migration
   def self.up
     create_table :landmarks do |t|
-      t.string :location
+      t.string :name
       t.string :xcoord
       t.string :ycoord
 

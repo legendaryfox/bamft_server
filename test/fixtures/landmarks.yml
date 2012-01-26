@@ -9,3 +9,16 @@ two:
   location: MyString
   xcoord: MyString
   ycoord: MyString
+
+# == Schema Information
+#
+# Table name: landmarks
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  xcoord     :string(255)
+#  ycoord     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

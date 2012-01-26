@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScheduleTest < ActiveSupport::TestCase
+class DatapullTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
@@ -11,13 +11,14 @@ end
 
 # == Schema Information
 #
-# Table name: schedules
+# Table name: datapulls
 #
 #  id          :integer         not null, primary key
-#  time_of_day :string(255)
+#  checksum    :string(255)
+#  notes       :text
+#  time_of_day :integer
 #  day_of_week :string(255)
-#  truck_id    :integer
-#  landmark_id :integer
+#  api_data    :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #
