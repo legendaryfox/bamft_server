@@ -1,9 +1,25 @@
 BamftServer::Application.routes.draw do
+  get "schedules/morning_trucks"
+
+  get "schedules/afternoon_trucks"
+
+  get "schedules/evening_trucks"
+
   get "truckinfo/fetch"
   
   resources :truckinfos do
     collection do
       get 'fetch'
+    end
+  end
+  
+  resources :schedules
+  
+  resources :schedules do
+    collection do
+      get 'morning_trucks'
+      get 'afternoon_trucks'
+      get 'evening_trucks'
     end
   end
 

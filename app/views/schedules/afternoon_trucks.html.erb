@@ -1,0 +1,6 @@
+<h1>Schedules#afternoon_trucks</h1>
+<p>Find me in app/views/schedules/afternoon_trucks.html.erb</p>
+
+<% @schedules.each do |schedule| %>
+<%= schedule.truck.name %> at <%= schedule.landmark.name %><br />
+<% end %>
