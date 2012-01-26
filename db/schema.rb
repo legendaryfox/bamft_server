@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126055943) do
+ActiveRecord::Schema.define(:version => 20120126060331) do
 
   create_table "datapulls", :force => true do |t|
     t.string   "checksum"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(:version => 20120126055943) do
 
   create_table "landmarks", :force => true do |t|
     t.string   "name"
-    t.string   "xcoord"
-    t.string   "ycoord"
+    t.float    "xcoord",     :limit => 255
+    t.float    "ycoord",     :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
