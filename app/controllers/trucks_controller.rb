@@ -3,7 +3,7 @@ class TrucksController < ApplicationController
     @trucks = Truck.all(:conditions => 
       {
         :schedules => {
-          :day_of_week => "Wednesday",
+          :day_of_week => Date::DAYNAMES[Time.now.wday],
           :time_of_day => "Morning"
         }
       },
@@ -11,32 +11,38 @@ class TrucksController < ApplicationController
     
     render :json => @trucks
     
+    puts 'rendering for ' + Date::DAYNAMES[Time.now.wday]
+    
   end
 
   def afternoon
     @trucks = Truck.all(:conditions => 
       {
         :schedules => {
-          :day_of_week => "Wednesday",
+          :day_of_week => Date::DAYNAMES[Time.now.wday],
           :time_of_day => "Afternoon"
         }
       },
       :joins => :schedules)
     
     render :json => @trucks
+    
+    puts 'rendering for ' + Date::DAYNAMES[Time.now.wday]
   end
 
   def evening
     @trucks = Truck.all(:conditions => 
       {
         :schedules => {
-          :day_of_week => "Wednesday",
+          :day_of_week => Date::DAYNAMES[Time.now.wday],
           :time_of_day => "Evening"
         }
       },
       :joins => :schedules)
     
     render :json => @trucks
+    
+    puts 'rendering for ' + Date::DAYNAMES[Time.now.wday]
   end
 
 end
