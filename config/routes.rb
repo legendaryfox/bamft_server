@@ -1,4 +1,18 @@
 BamftServer::Application.routes.draw do
+  get "trucks/morning"
+
+  get "trucks/afternoon"
+
+  get "trucks/evening"
+
+  get "datapulls/full"
+
+  get "datapulls/morning"
+
+  get "datapulls/afternoon"
+
+  get "datapulls/evening"
+
   get "schedules/morning_trucks"
 
   get "schedules/afternoon_trucks"
