@@ -50,8 +50,8 @@ class Datapull < ActiveRecord::Base
       
         # Locations
         location_name = feature['attributes']['Location']
-        location_x = feature['attributes']['XCoord']
-        location_y = feature['attributes']['YCoord']
+        location_x = feature['attributes']['XCoord'].to_s
+        location_y = feature['attributes']['YCoord'].to_s
       
       
         day_of_week = feature['attributes']['DayOfWeek']
