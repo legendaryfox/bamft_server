@@ -1,0 +1,31 @@
+<h1>All Trucks</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Cuisine</th>
+			<th>Description</th>
+			<th>Menu</th>
+			<th>Twitter</th>
+			<th>Facebook</th>
+			<th>Website</th>
+			<th>Yelp</th>
+		</tr>
+	</thead>
+<% @trucks.each do |truck| %>
+	<tr>
+		<td><%= link_to truck.name, edit_truck_path(truck) %></td>
+		<td><%= truck.email %></td>
+		<td><%= truck.cuisine %></td>
+		<td><%= simple_format(truck.description) %></td>
+		<td><%= simple_format(truck.menu) %></td>
+		<td><%= truck.twitter %></td>
+		<td><%= truck.facebook %></td>
+		<td><%= truck.website %></td>
+		<td><%= truck.yelp %></td>
+	</tr>
+<% end %>
+
+</table>

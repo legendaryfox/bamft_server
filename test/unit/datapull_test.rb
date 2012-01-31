@@ -9,17 +9,18 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: datapulls
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  checksum    :string(255)
 #  notes       :text
 #  time_of_day :integer
 #  day_of_week :string(255)
 #  api_data    :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 

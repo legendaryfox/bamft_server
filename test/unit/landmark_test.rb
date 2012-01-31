@@ -7,15 +7,16 @@ class LandmarkTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: landmarks
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  name       :string(255)
 #  xcoord     :string(255)
 #  ycoord     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 

@@ -7,15 +7,23 @@ class TruckTest < ActiveSupport::TestCase
   end
 end
 
+
+
 # == Schema Information
 #
 # Table name: trucks
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  name        :string(255)
 #  cuisine     :string(255)
 #  description :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
+#  menu        :text
+#  twitter     :string(255)
+#  facebook    :string(255)
+#  website     :string(255)
+#  email       :string(255)
+#  yelp        :string(255)
 #
 

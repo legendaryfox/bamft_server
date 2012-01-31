@@ -34,6 +34,8 @@ BamftServer::Application.routes.draw do
   end
   
   resources :schedules
+  resources :trucks
+  resources :landmarks
   
   resources :schedules do
     collection do

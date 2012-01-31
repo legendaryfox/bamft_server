@@ -1,0 +1,10 @@
+<h1>Edit Page for <%= @truck.name %></h1>
+
+<%= form_for(@truck) do |truck_form| %>
+	<%= render 'shared/error_messages', :object => truck_form.object %>
+	<%= render 'fields', :truck_form => truck_form %>
+
+	<div class="actions">
+		<%= truck_form.submit "Update", :class => "btn primary" %>
+	</div>
+<% end %>

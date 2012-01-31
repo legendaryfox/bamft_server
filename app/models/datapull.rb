@@ -17,18 +17,16 @@ class Datapull < ActiveRecord::Base
   
       # First, we pull
       food_trucks_api = "http://hubmaps2.cityofboston.gov/ArcGIS/rest/services/Dev_services/food_trucks/MapServer/" + request_tod.to_s + "/query?text=%25&outFields=GPS%2CLocation%2CXCoord%2CYCoord%2CDayOfWeek%2CTimeOfDay%2CTestFld%2CShape&f=pjson"
-      #food_trucks_api = "http://www.google.com/asdfasfd"
+
       uri = URI.parse(food_trucks_api)
       api_content = open(uri) {|f| f.read }
   
       # Next, we store this information
     
-      # We should probably check data integrity first...
+      # Rudimentary data integrity test 
       test_api_data = JSON.parse(api_content)
       if test_api_data['features'] && !test_api_data['error']
-      
-      
-        #self.api_data = JSON.parse(api_content)
+       
         self.api_data = test_api_data
         self.checksum = make_checksum(self.api_data.to_s)
         self.time_of_day = request_tod
@@ -70,9 +68,6 @@ class Datapull < ActiveRecord::Base
         location_y = feature['attributes']['YCoord'].to_s
       
       
-       # day_of_week = feature['attributes']['DayOfWeek']
-        #time_of_day = feature['attributes']['TimeOfDay']
-      
         if (Landmark.find(:all, :conditions => { :name => location_name, :xcoord => location_x, :ycoord => location_y})).count == 0
           # This location is not in our database. Create and log      
           my_landmark = Landmark.create!(:name => location_name, :xcoord => location_x, :ycoord => location_y)
@@ -99,23 +94,19 @@ class Datapull < ActiveRecord::Base
                 # This truck is not in our database. Create and log
                 my_truck = Truck.create!(:name => truck_name)
                 NEW_RECORD_LOG.info "Created a new truck #{truck_name}"
+                
               else
               
                 # This truck exists.
-              
                 my_truck = Truck.find_by_name(truck_name)
+                
               end
             
         # SCHEDULES
             
-              # While we're in here, we'll make schedule.
-            
+              # While we're in here, we'll make schedule.          
               # Should we drop all schedules that are of that TOD/DOW?
-              
-           
-           
-             
-              
+        
               if (Schedule.find(:all, :conditions => { 
                   :truck_id => my_truck.id, 
                   :landmark_id => my_landmark.id, 
@@ -187,17 +178,18 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: datapulls
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  checksum    :string(255)
 #  notes       :text
 #  time_of_day :integer
 #  day_of_week :string(255)
 #  api_data    :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 

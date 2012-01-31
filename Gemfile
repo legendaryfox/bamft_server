@@ -9,6 +9,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'json'
 gem 'annotate'
 gem 'rgeo'
+gem 'best_in_place'
+
 #gem 'proj4rb'
 
 # Use unicorn as the web server

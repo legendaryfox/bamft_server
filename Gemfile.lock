@@ -31,6 +31,8 @@ GEM
     annotate (2.4.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    best_in_place (0.2.3)
+      rails (>= 3.0.0)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -77,6 +79,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  best_in_place
   json
   rails (= 3.0.1)
   rgeo

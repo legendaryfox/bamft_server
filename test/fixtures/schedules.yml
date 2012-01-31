@@ -14,16 +14,17 @@ two:
 
 
 
+
 # == Schema Information
 #
 # Table name: schedules
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  time_of_day :string(255)
 #  day_of_week :string(255)
 #  truck_id    :integer
 #  landmark_id :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 
