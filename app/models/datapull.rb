@@ -16,10 +16,12 @@ class Datapull < ActiveRecord::Base
       # TODO: We don't know how to request for specific days
   
       # First, we pull
-      food_trucks_api = "http://hubmaps2.cityofboston.gov/ArcGIS/rest/services/Dev_services/food_trucks/MapServer/" + request_tod.to_s + "/query?text=%25&outFields=GPS%2CLocation%2CXCoord%2CYCoord%2CDayOfWeek%2CTimeOfDay%2CTestFld%2CShape&f=pjson"
-
+      #food_trucks_api = "http://hubmaps2.cityofboston.gov/ArcGIS/rest/services/Dev_services/food_trucks/MapServer/" + request_tod.to_s + "/query?text=%25&outFields=GPS%2CLocation%2CXCoord%2CYCoord%2CDayOfWeek%2CTimeOfDay%2CTestFld%2CShape&f=pjson"
+      food_trucks_api = "http://hubmaps2.cityofboston.gov/ArcGIS/rest/services/Dev_services/food_trucks/MapServer/" + request_tod.to_s + "/query?text=%25&outFields=GPS%2CLocation%2CXCoord%2CYCoord%2CDayOfWeek%2CTimeOfDay%2CTestFld%2CShape&f=pjson&outSR=4326"
+      
       uri = URI.parse(food_trucks_api)
       api_content = open(uri) {|f| f.read }
+      
   
       # Next, we store this information
     
@@ -64,8 +66,10 @@ class Datapull < ActiveRecord::Base
       
         # Locations
         location_name = feature['attributes']['Location']
-        location_x = feature['attributes']['XCoord'].to_s
-        location_y = feature['attributes']['YCoord'].to_s
+        #location_x = feature['attributes']['XCoord'].to_s
+        #location_y = feature['attributes']['YCoord'].to_s
+        location_x = feature['geometry']['x'].to_s
+        location_y = feature['geometry']['y'].to_s
       
       
         if (Landmark.find(:all, :conditions => { :name => location_name, :xcoord => location_x, :ycoord => location_y})).count == 0
