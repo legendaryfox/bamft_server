@@ -40,17 +40,17 @@ ActiveRecord::Schema.define(:version => 20120131091950) do
   end
 
   create_table "trucks", :force => true do |t|
-    t.string    "name"
-    t.string    "cuisine"
-    t.text      "description"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.text      "menu"
-    t.string    "twitter"
-    t.string    "facebook"
-    t.string    "website"
-    t.string    "email"
-    t.string    "yelp"
+    t.string   "name",        :default => "", :null => false
+    t.string   "cuisine",     :default => ""
+    t.text     "description", :default => "", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "menu",        :default => "", :null => false
+    t.string   "twitter",     :default => "", :null => false
+    t.string   "facebook",    :default => "", :null => false
+    t.string   "website",     :default => "", :null => false
+    t.string   "email",       :default => "", :null => false
+    t.string   "yelp",        :default => "", :null => false
   end
 
 end
