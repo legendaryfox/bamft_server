@@ -41,7 +41,7 @@ class Datapull < ActiveRecord::Base
       end
     
     rescue Exception => e
-      NEW_RECORD_LOG.error "PULL_DATA FAILED FOR #{request_tod}."
+      NEW_RECORD_LOG.error "PULL_DATA FAILED FOR #{request_tod} - #{food_trucks_api}."
       return false
     end
  
@@ -159,7 +159,7 @@ class Datapull < ActiveRecord::Base
       
       (0..2).each do |tod|
         datapull = Datapull.new
-        datapull.pull_data(2)
+        datapull.pull_data(tod)
         datapull.update_data!
         # probably do some validation here...
         if datapull.save
