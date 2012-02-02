@@ -159,7 +159,7 @@ class Datapull < ActiveRecord::Base
       
       (0..2).each do |tod|
         datapull = Datapull.new
-        datapull.pull_data(tod)
+        datapull.pull_data(2)
         datapull.update_data!
         # probably do some validation here...
         if datapull.save
