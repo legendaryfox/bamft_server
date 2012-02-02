@@ -157,7 +157,7 @@ class Datapull < ActiveRecord::Base
     
     def make_daily_pull
       
-      (2).each do |tod|
+      (0..2).each do |tod|
         datapull = Datapull.new
         datapull.pull_data(tod)
         datapull.update_data!
