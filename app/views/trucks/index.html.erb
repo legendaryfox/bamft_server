@@ -20,7 +20,17 @@
 		<td><%= truck.email %></td>
 		<td><%= truck.cuisine %></td>
 		<td><%= simple_format(truck.description) %></td>
-		<td><%= simple_format(truck.menu) %></td>
+		
+		<td>
+			<ul>
+				<% truck.menu_items.each do |menu_item| %>
+				<li><strong><%= link_to menu_item.name, edit_menu_item_path(menu_item) %></strong> (<%= menu_item.price %>) - <%= simple_format(menu_item.description) %></li>
+			
+				<% end %>
+				<li><%= link_to 'Add', new_menu_item_path %></li>
+			</ul>
+		</td>
+		
 		<td><%= truck.twitter %></td>
 		<td><%= truck.facebook %></td>
 		<td><%= truck.website %></td>

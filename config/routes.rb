@@ -1,4 +1,12 @@
 BamftServer::Application.routes.draw do
+  get "menu_items/new"
+
+  get "menu_items/edit"
+
+  get "menu_items/full_dump"
+
+  get "menu_items/index"
+
   get "landmarks/full_dump"
 
   get "trucks/full_dump"
@@ -36,6 +44,7 @@ BamftServer::Application.routes.draw do
   resources :schedules
   resources :trucks
   resources :landmarks
+  resources :menu_items
   
   resources :schedules do
     collection do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131091950) do
+ActiveRecord::Schema.define(:version => 20120207072243) do
 
   create_table "datapulls", :force => true do |t|
     t.string    "checksum"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20120131091950) do
     t.timestamp "updated_at"
   end
 
+  create_table "menu_items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "price"
+    t.integer  "truck_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "schedules", :force => true do |t|
     t.string    "time_of_day"
     t.string    "day_of_week"
@@ -40,17 +49,17 @@ ActiveRecord::Schema.define(:version => 20120131091950) do
   end
 
   create_table "trucks", :force => true do |t|
-    t.string   "name",        :default => "", :null => false
-    t.string   "cuisine",     :default => ""
-    t.text     "description", :default => "", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "menu",        :default => "", :null => false
-    t.string   "twitter",     :default => "", :null => false
-    t.string   "facebook",    :default => "", :null => false
-    t.string   "website",     :default => "", :null => false
-    t.string   "email",       :default => "", :null => false
-    t.string   "yelp",        :default => "", :null => false
+    t.string    "name"
+    t.string    "cuisine"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.text      "menu"
+    t.string    "twitter"
+    t.string    "facebook"
+    t.string    "website"
+    t.string    "email"
+    t.string    "yelp"
   end
 
 end

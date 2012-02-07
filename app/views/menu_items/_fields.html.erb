@@ -1,0 +1,31 @@
+<fieldset>
+	<legend>Menu Information</legend>
+	<div class="clearfix">
+		<%= menu_item_form.label :name, :class => "xlInput" %>
+		<div class="input">
+			<%= menu_item_form.text_field :name, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= menu_item_form.label :description, :class => "xlInput" %>
+		<div class="input">
+			<%= menu_item_form.text_field :description, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= menu_item_form.label :price, :class => "xlInput" %>
+		<div class="input">
+			<%= menu_item_form.text_field :price, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= menu_item_form.label :truck_id, :class => "xlInput" %>
+		<div class="input">
+			<%= menu_item_form.select(:truck_id, Truck.all.collect {|truck| [truck.name, truck.id] }, :prompt => true)%>
+		</div>
+	</div>
+	
+</fieldset>
