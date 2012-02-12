@@ -1,0 +1,24 @@
+<fieldset>
+	<legend>Factlet Information</legend>
+	<div class="clearfix">
+		<%= factlet_form.label :title, :class => "xlInput" %>
+		<div class="input">
+			<%= factlet_form.text_field :title, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= factlet_form.label :content, :class => "xlInput" %>
+		<div class="input">
+			<%= factlet_form.text_field :content, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<div class="clearfix">
+		<%= factlet_form.label :truck_id, :class => "xlInput" %>
+		<div class="input">
+			<%= factlet_form.select(:truck_id, Truck.all.collect {|truck| [truck.name, truck.id] }, :prompt => true)%>
+		</div>
+	</div>
+	
+</fieldset>

@@ -7,16 +7,17 @@ class MenuItemTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: menu_items
 #
-#  id          :integer         not null, primary key
+#  id          :integer         primary key
 #  name        :string(255)
 #  description :text
 #  price       :string(255)
 #  truck_id    :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :timestamp
+#  updated_at  :timestamp
 #
 

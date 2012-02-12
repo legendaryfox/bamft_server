@@ -41,6 +41,12 @@ class MenuItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @menu_item = MenuItem.find(params[:id])
+    @menu_item.destroy
+    redirect_to trucks_path, :flash => { :success => "Menu Item Deleted" }
+    
+  end
 
   def index
     @menu_items = MenuItem.find(:all, :order => "truck_id ASC")

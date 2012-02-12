@@ -1,0 +1,13 @@
+<h1>Factlets</h1>
+
+<ul>
+	<% @factlets.each do |factlet| %>
+	<li><%= link_to factlet.title, edit_factlet_path(factlet) %> - <%= factlet.content %> 
+	<% if !factlet.truck.nil? %> (<%= factlet.truck.name %>) <% end %>
+	<%= link_to "[X]", factlet, :method => :delete %>
+	</li>
+	
+	<% end %>
+</ul>
+
+<%= link_to "New Factlet", new_factlet_path %>

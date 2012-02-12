@@ -6,6 +6,7 @@ class Truck < ActiveRecord::Base
   has_many :landmarks, :through => :schedules, :source => :landmark
   
   has_many :menu_items
+  has_many :factlets
   
 end
 

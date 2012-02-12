@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207072243) do
+ActiveRecord::Schema.define(:version => 20120212054326) do
+
+  create_table "announcements", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "truck_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "datapulls", :force => true do |t|
     t.string    "checksum"
@@ -22,6 +30,14 @@ ActiveRecord::Schema.define(:version => 20120207072243) do
     t.timestamp "updated_at"
   end
 
+  create_table "factlets", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "truck_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "landmarks", :force => true do |t|
     t.string    "name"
     t.string    "xcoord"
@@ -31,12 +47,12 @@ ActiveRecord::Schema.define(:version => 20120207072243) do
   end
 
   create_table "menu_items", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "price"
-    t.integer  "truck_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.text      "description"
+    t.string    "price"
+    t.integer   "truck_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "schedules", :force => true do |t|

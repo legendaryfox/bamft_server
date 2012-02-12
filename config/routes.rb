@@ -1,4 +1,22 @@
 BamftServer::Application.routes.draw do
+  get "factlets/new"
+
+  get "factlets/edit"
+
+  get "factlets/index"
+
+  get "factlets/full_dump"
+
+  get "factlets/random"
+
+  get "announcements/new"
+
+  get "announcements/show"
+  
+  get "announcements/edit"
+
+  get "announcements/full_dump"
+
   get "menu_items/new"
 
   get "menu_items/edit"
@@ -45,6 +63,8 @@ BamftServer::Application.routes.draw do
   resources :trucks
   resources :landmarks
   resources :menu_items
+  resources :announcements
+  resources :factlets
   
   resources :schedules do
     collection do

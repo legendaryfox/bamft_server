@@ -1,0 +1,24 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  content: MyText
+  truck_id: 1
+
+two:
+  title: MyString
+  content: MyText
+  truck_id: 1
+
+# == Schema Information
+#
+# Table name: announcements
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  content    :text
+#  truck_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

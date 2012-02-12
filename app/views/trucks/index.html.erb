@@ -24,7 +24,7 @@
 		<td>
 			<ul>
 				<% truck.menu_items.each do |menu_item| %>
-				<li><strong><%= link_to menu_item.name, edit_menu_item_path(menu_item) %></strong> (<%= menu_item.price %>) - <%= simple_format(menu_item.description) %></li>
+				<li><%= link_to "[X]", menu_item, :method => :delete %><strong><%= link_to menu_item.name, edit_menu_item_path(menu_item) %></strong> (<%= menu_item.price %>) - <%= simple_format(menu_item.description) %> </li>
 			
 				<% end %>
 				<li><%= link_to 'Add', new_menu_item_path %></li>
