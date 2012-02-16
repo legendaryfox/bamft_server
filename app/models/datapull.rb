@@ -4,7 +4,7 @@ class Datapull < ActiveRecord::Base
   serialize :api_data
   
   validates :api_data, :presence => true
-  validates :checksum, :presence => true, :uniqueness => { :case_sensitive => false } 
+  # validates :checksum, :presence => true, :uniqueness => { :case_sensitive => false } 
   
   
   
@@ -164,11 +164,13 @@ class Datapull < ActiveRecord::Base
         # probably do some validation here...
         if datapull.save
           NEW_RECORD_LOG.info "Added new API DATA for #{tod}"
+        else
+          NEW_RECORD_LOG.info "COULDN'T SAVE API DATA. ERROR: #{datapull.errors.full_messages}"
         end
       end
       
       
-      NEW_RECORD_LOG.info "Made a daily pull."
+      NEW_RECORD_LOG.info "Completed a daily pull task."
       return true
       
     end
