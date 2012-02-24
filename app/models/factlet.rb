@@ -8,15 +8,16 @@ class Factlet < ActiveRecord::Base
   
 end
 
+
 # == Schema Information
 #
 # Table name: factlets
 #
-#  id         :integer         not null, primary key
+#  id         :integer         primary key
 #  title      :string(255)
 #  content    :text
 #  truck_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :timestamp
+#  updated_at :timestamp
 #
 

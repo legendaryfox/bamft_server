@@ -9,6 +9,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: trucks
@@ -25,5 +26,6 @@ end
 #  website     :string(255)
 #  email       :string(255)
 #  yelp        :string(255)
+#  phone       :string(255)
 #
 

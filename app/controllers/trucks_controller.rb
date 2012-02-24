@@ -2,7 +2,7 @@ class TrucksController < ApplicationController
   
   def full_dump
     #@trucks = Truck.all
-    @trucks = Truck.select('id', 'name', 'cuisine', 'description', 'menu', 'twitter', 'facebook', 'website', 'email', 'yelp')
+    @trucks = Truck.select('id', 'name', 'cuisine', 'description', 'menu', 'twitter', 'facebook', 'website', 'email', 'yelp', 'phone')
     render :json => @trucks
     
     puts 'Rendering full Truck JSON dump'

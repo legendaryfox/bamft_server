@@ -1,6 +1,6 @@
 class Truck < ActiveRecord::Base
   
-  attr_accessible :name, :cuisine, :description, :menu, :twitter, :facebook, :website, :email, :yelp
+  attr_accessible :name, :cuisine, :description, :menu, :twitter, :facebook, :website, :email, :yelp, :phone
   
   has_many :schedules
   has_many :landmarks, :through => :schedules, :source => :landmark
@@ -9,6 +9,7 @@ class Truck < ActiveRecord::Base
   has_many :factlets
   
 end
+
 
 
 
@@ -28,5 +29,6 @@ end
 #  website     :string(255)
 #  email       :string(255)
 #  yelp        :string(255)
+#  phone       :string(255)
 #
 

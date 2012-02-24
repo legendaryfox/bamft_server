@@ -7,11 +7,13 @@
 			<th>Email</th>
 			<th>Cuisine</th>
 			<th>Description</th>
+			<th>Phone</th>
 			<th>Menu</th>
 			<th>Twitter</th>
 			<th>Facebook</th>
 			<th>Website</th>
 			<th>Yelp</th>
+			
 		</tr>
 	</thead>
 <% @trucks.each do |truck| %>
@@ -20,6 +22,7 @@
 		<td><%= truck.email %></td>
 		<td><%= truck.cuisine %></td>
 		<td><%= simple_format(truck.description) %></td>
+		<td><%= truck.phone %></td>
 		
 		<td>
 			<ul>
